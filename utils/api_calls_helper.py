@@ -36,7 +36,7 @@ bookNames = [
     'Lord of the rings - Two towers', 'Game of thrones 1', 'Middle earth'
 ]
 
-authors = [name + random.choice(lastnames) for name in males + females]
+authors = [name + " " + random.choice(lastnames) for name in males + females]
 
 categories = [
     'Fantasy', 'Mythology', 'Science', 'Anime', 'Novel', 'Philosophy',
@@ -107,11 +107,8 @@ def createBooks(count):
         publish_date = datetime(
             random.randint(1900,2022),
             random.randint(1,12),
-            random.randint(1,28),
-            random.randint(0,24),
-            random.randint(0,59),
-            random.randint(0,59)
-            ).strftime("%Y-%m-%dT%H:%M:%SZ")
+            random.randint(1,28)
+            ).strftime("%Y-%m-%d")
         copies = random.randint(10, 100)
 
         data = {
