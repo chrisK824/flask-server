@@ -29,7 +29,7 @@ class Book(db.Model):
     author = db.Column(db.String(80), nullable=False)
     category = db.Column(db.String(80), nullable=False)
     pages = db.Column(db.Integer, nullable=False)
-    publish_date = db.Column(db.String(80), nullable=False)
+    publish_date = db.Column(db.Integer(), nullable=False)
     __table_args__ = (db.UniqueConstraint('name', 'author'),)
 
 

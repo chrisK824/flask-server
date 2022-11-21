@@ -2,6 +2,7 @@ import requests
 import json
 import random
 from time import sleep
+from datetime import datetime
 
 baseURL = 'http://127.0.0.1:5000'
 
@@ -13,7 +14,9 @@ males = [
 ]
 
 females = [
-    'Marta', 'Nadine', 'Eviliana', 'Amanda', 'Sachin',
+    'Marta', 'Nadine', 'Eviliana', 'Amanda', 'Sachin', 'Nora',
+    'Harriet', 'Lindsay', 'Marina', 'Lina', 'Diana', 'Athena',
+    'Churui'
 ]
 
 lastnames = [
@@ -23,23 +26,21 @@ lastnames = [
 
 nationalities = [
     'Greek', 'English', 'Irish', 'Italian',
-    'Bosnian', 'Spanish', 'Scotish'
+    'Bosnian', 'Spanish', 'Scotish', 'Polish', 'Hungarian'
 ]
 
 bookNames = [
-    'Chris', 'Christian', 'Jordan', 'Jim', 'Dimitris',
-    'Mitsos', 'Filipo', 'Robert', 'Damien', 'Todd',
-    'Michael', 'Mike', 'Masum', 'Nikos', 'Menelaos',
-    'Menios', 'Mark', 'Marcus', 'Charlie', 'Elias'
+    'Moby Dick', 'The art of not giving a fuck', 'Carl Friedrich Gauss',
+    'The man who harnessed the sea', 'The Bible', "Metamorphosis",
+    'Dragon Ball Super Vol 15', 'Dune', 'Harry Potter and the chamber of secrets',
+    'Lord of the rings - Two towers', 'Game of thrones 1', 'Middle earth'
 ]
 
-authors = [
-    'Marta', 'Nadine', 'Eviliana', 'Amanda', 'Sachin',
-]
+authors = [name + random.choice(lastnames) for name in males + females]
 
 categories = [
-    'Red', 'Green', 'Blue', 'White', 'Black', 'Yellow',
-    'Orange', 'Purple', 'Brown', 'Hazel', 'Grey', 'Pink'
+    'Fantasy', 'Mythology', 'Science', 'Anime', 'Novel', 'Philosophy',
+    'Drama', 'Religious'
 ]
 
 
@@ -103,7 +104,14 @@ def createBooks(count):
         author = random.choice(authors)
         category = random.choice(categories)
         pages = random.randint(150, 750)
-        publish_date = random.randint(1920, 2019)
+        publish_date = datetime(
+            random.randint(1900,2022),
+            random.randint(1,12),
+            random.randint(1,28),
+            random.randint(0,24),
+            random.randint(0,59),
+            random.randint(0,59)
+            ).strftime("%Y-%m-%dT%H:%M:%SZ")
         copies = random.randint(10, 100)
 
         data = {
@@ -142,12 +150,12 @@ def deleteBooks(count):
         sleep(0.1)
 
 
-createMembers(10)
+createMembers(15)
 getMembers()
 deleteMembers(5)
 getMembers()
-createBooks(10)
+createBooks(15)
 getBooks()
-deleteBooks(5)
+deleteBooks(10)
 getBooks()
 
