@@ -1,6 +1,7 @@
 import json
 from uuid import uuid4
-import os, sys
+import os
+import sys
 from datetime import datetime
 import sqlalchemy
 from flask import request
